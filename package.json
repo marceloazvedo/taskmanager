@@ -1,0 +1,17 @@
+{
+  "name": "forum",
+  "version": "1.0.0",
+  "description": "Academic Project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "forum"
+  ],
+  "author": "Marcelo S. de Azevedo",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^5.2.16"
+  }
+}

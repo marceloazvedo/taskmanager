@@ -1,4 +1,4 @@
-const validate = require(`./validate`)
+const validate = require('./validate')
 
 const rules = [
     'StringBasic',

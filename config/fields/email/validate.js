@@ -1,6 +1,4 @@
-module.exports = (lang) => [
-    (value) => {
-        return require('./regex').test(value)
-    },
-    require('./messages')[lang]
+module.exports = [
+    (value) => require('./regex').test(value),
+    {message: require('./messages')}
 ]

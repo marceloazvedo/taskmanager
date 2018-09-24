@@ -1,20 +1,14 @@
 const User = require('./user-model')
-const I18N = require("i18n")
+const ErroHandler = require('../../config/modules/error-handler')
 
-I18N.configure({
-    locales:['en', 'de'],
-    directory: '../../locales',
-    defaultLocale: 'en'
-})
+const LOCALE = 'en'
 
-const marcelo = new User({email: 'marceloazvedo1'})
-marcelo.save(function(err) {
-    if(err) {
-        const fields = Object.keys(err.errors)
-        for(const field of fields){
-            const fieldError = err.errors[field]
-            console.log(fieldError.message)
-            console.log(I18N.__(fieldError.message))
-        }
+// user defined
+// required
+
+const marcelo = new User({ email: 'marcelo acads' })
+marcelo.save(function (err) {
+    if (err) {
+        console.log(JSON.stringify(ErroHandler(err, LOCALE)))
     }
 })

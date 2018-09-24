@@ -13,7 +13,6 @@
   "license": "ISC",
   "dependencies": {
     "i18n": "^0.8.3",
-    "i18n-2": "^0.7.3",
     "mongoose": "^5.2.16"
   }
 }

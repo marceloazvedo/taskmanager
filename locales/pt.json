@@ -1,0 +1,7 @@
+{
+	"email": {
+		"user defined": "O email \"%s\" não é válido!",
+		"required": "Insira um e-mail!"
+	},
+	"internal server error": "Erro interno de processamento."
+}

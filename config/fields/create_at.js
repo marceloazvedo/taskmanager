@@ -1,1 +1,1 @@
-module.exports = require('../types-mongoose').DateNow
+module.exports = require('../types/mongoose').DateNow

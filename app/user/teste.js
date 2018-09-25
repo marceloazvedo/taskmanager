@@ -6,7 +6,7 @@ const LOCALE = 'en'
 // user defined
 // required
 
-const marcelo = new User({ email: 'marcelo acads' })
+const marcelo = new User({ email: 'marceloazvedo@gmail.com' })
 marcelo.save(function (err) {
     if (err) {
         console.log(JSON.stringify(ErroHandler(err, LOCALE)))

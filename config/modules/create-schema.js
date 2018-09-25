@@ -8,4 +8,4 @@ const toSchema = (obj, field) =>
 const createSchema = (fields) => 
     fields.reduce(toSchema, {})
 
-module.exports = (fields) => createSchema(fields)
+module.exports = (fields) => [createSchema(fields), require('./timestamps')]

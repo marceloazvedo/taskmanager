@@ -2,9 +2,9 @@ const mongoose = require('../../config/db')
 const createSchema = require('../../config/modules/create-schema');
 
 const fields = [
-    'name',
-    'email',
-    'password',
+    'description',
+    'end_in',
+    'is_finish',
     'active'
 ]
 

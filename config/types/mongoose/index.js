@@ -6,5 +6,6 @@ module.exports = {
     BooleanTrue: { type: Boolean, default: true },
     DateNow: { type: Date, default: Date.now },
     StringMaxLength: require('./max-length'),
-    StringLowercase: { lowercase: true }
+    StringLowercase: { lowercase: true },
+    Date: { type: Date }
 }

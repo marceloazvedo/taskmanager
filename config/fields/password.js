@@ -1,1 +1,1 @@
-module.exports = require('../types-mongoose').StringBasic
+module.exports = require('../types/mongoose').StringBasic

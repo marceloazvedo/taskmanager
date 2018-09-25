@@ -1,14 +1,10 @@
-const User = require('./user-model')
-const ErroHandler = require('../../config/modules/error-handler')
+const erroHandler = require('../../config/modules/error-handler')
+const UserController = require('./user-controller');
 
 const LOCALE = 'en'
 
-// user defined
-// required
-
-const marcelo = new User({ email: 'marceloazvedo@gmail.com' })
-marcelo.save(function (err) {
-    if (err) {
-        console.log(JSON.stringify(ErroHandler(err, LOCALE)))
-    }
+UserController.findBy('email','marceloazvedo@gmail.com').then(users => {
+    users.map(user => console.log(user))
+}).catch(err => {
+    console.error(err)
 })

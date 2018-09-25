@@ -3,5 +3,15 @@
 		"user defined": "O email \"%s\" não é válido!",
 		"required": "Insira um e-mail!"
 	},
-	"internal server error": "Erro interno de processamento."
+	"internal server error": "Erro interno de processamento.",
+	"password": {
+		"required": "Insira uma senha!",
+		"maxlength": "A senha deve ter no máximo 40 caracteres."
+	},
+	"name": {
+		"required": "Insira um nome!"
+	},
+	"description": {
+		"required": "description.required"
+	}
 }

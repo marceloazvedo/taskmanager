@@ -1,0 +1,1 @@
+module.exports = (Model) => (obj) => Model.save(obj)

@@ -5,7 +5,8 @@ const fields = [
     'description',
     'end_in',
     'is_finish',
-    'active'
+    'active',
+    'user'
 ]
 
 const schema = createSchema(fields)

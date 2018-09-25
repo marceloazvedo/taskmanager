@@ -4,7 +4,6 @@ const INTERNAL_SERVER_ERROR = 'internal server error'
 const DEFAULT_LOCALE = 'pt'
 
 module.exports = (err, locale) => {
-    console.log(err.errors)
     if (err && err.name === 'ValidationError') {
         return Object.keys(err.errors).map(field => {
             const fieldError = err.errors[field]

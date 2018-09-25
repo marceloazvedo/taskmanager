@@ -1,0 +1,1 @@
+module.exports = (Model) => (query, obj) => Model.update(query, obj, {multi: true}).exec()

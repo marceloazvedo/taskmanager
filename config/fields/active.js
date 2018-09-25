@@ -1,1 +1,1 @@
-module.exports = require('../types/mongoose').BooleanFalse
+module.exports = require('../types/mongoose').BooleanTrue

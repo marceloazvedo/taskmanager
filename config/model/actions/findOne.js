@@ -1,0 +1,1 @@
+module.exports = (Model) => (obj) => Model.update({ _id: obj._id }, obj).exec()

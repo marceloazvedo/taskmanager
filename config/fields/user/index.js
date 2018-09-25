@@ -1,5 +1,5 @@
 const rules = [
-    'Date'
+    'user'
 ]
 
 module.exports = Object.assign({},

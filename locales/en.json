@@ -3,5 +3,11 @@
 		"required": "E-mail is required!",
 		"user defined": "The e-mail \"%s\" is not valid!"
 	},
-	"internal server error": "Internal server error."
+	"internal server error": "Internal server error.",
+	"password": {
+		"required": "Password is required!"
+	},
+	"name": {
+		"required": "Name is required!"
+	}
 }

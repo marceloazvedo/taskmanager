@@ -1,5 +1,7 @@
 const rules = [
-    'Date'
+    'StringBasic',
+    'requiredTrue',
+    'StringMaxLength-40'
 ]
 
 module.exports = Object.assign({},

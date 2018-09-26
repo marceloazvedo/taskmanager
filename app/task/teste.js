@@ -4,6 +4,7 @@ const User = require('../user/user-model')
 const erroHandler = require('../../config/modules/error-handler')
 
 
+
 User.findOne({}).lean().exec().then(user => {
     const task = new Task({
         description: 'TESTE'

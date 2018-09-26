@@ -1,12 +1,5 @@
 const User = require('./user-model')
 
-const actions = [
-    'findAll',
-    'findOne',
-    'findBy',
-    'create',
-    'update',
-    'delete'
-]
+const actions = []
 
-module.exports = require('../../config/modules/controller')(User, actions)
+module.exports = require('../../config/modules/create-model')(User, actions)

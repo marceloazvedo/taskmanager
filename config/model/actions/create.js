@@ -1,1 +1,1 @@
-module.exports = (Model) => (obj) => Model.save(obj)
+module.exports = (Model) => (obj) => new Model(obj).save()

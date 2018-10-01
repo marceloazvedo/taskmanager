@@ -1,0 +1,1 @@
+module.exports = (Model, actions) => require('../../config/modules/create-model')(Model, actions)

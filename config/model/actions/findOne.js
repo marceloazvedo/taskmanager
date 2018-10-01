@@ -1,1 +1,1 @@
-module.exports = (Model) => (obj) => Model.update({ _id: obj._id }, obj).exec()
+module.exports = (Model) => (id) => Model.findOne({ _id: id }).lean().exec()

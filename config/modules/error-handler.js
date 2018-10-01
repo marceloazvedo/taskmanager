@@ -9,7 +9,7 @@ module.exports = (err, locale) => {
             const fieldError = err.errors[field]
             return {
                 field: fieldError.path,
-                value: fieldError.value,
+                value: fieldError.value ? fieldError.value : '',
                 message: I18N.__({ phrase: fieldError.path + '.' + fieldError.properties.type, locale: locale ? locale : DEFAULT_LOCALE }, fieldError.value)
             }
         }, {})

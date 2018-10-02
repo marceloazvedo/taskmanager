@@ -1,1 +1,1 @@
-module.exports = (Model) => (id) => Model.findOne({ _id: id }).lean().exec()
+module.exports = (Model) => (query) => Model.findOne(query).lean().exec()

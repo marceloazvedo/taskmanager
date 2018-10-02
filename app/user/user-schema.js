@@ -5,7 +5,9 @@ const fields = [
     'name',
     'email',
     'password',
-    'active'
+    'active',
+    'expiration',
+    'token'
 ]
 
 const schema = createSchema(fields)

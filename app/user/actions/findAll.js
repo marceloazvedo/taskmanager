@@ -3,6 +3,6 @@ const ResponseUtils = require('../../../config/modules/response')
 
 module.exports = (req, res, next) => {
     TaskDAO.findAll({}).then((tasks) => {
-        ResponseUtils(res, tasks)
+        ResponseUtils(res, {tasks})
     })
 }

@@ -1,0 +1,1 @@
+module.exports = (Model) => (id) => Model.findOne({ _id: id }).lean().exec()

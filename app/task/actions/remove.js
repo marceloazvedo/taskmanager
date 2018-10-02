@@ -4,6 +4,6 @@ const ErrorHandler = require('../../../config/modules/error-handler')
 
 module.exports = (req, res, next) => {
     TaskDAO.remove(req.params.id)
-        .then(ResponseUtils(res, {}))
-        .catch(err => ErrorHandler(err))
+        .then(ResponseUtils(res))
+        .catch(err => ResponseUtils(res, err))
 }

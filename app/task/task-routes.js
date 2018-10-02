@@ -2,9 +2,7 @@ const ACTIONS_FOLER = '/actions'
 const ACTIONS_PATH_FULL = __dirname + ACTIONS_FOLER
 
 const createRoutes = require('../../config/modules/create-routes')
-const createActions = require('../../config/modules/create-actions')
-const createController = require('../../config/modules/create-controller')(ACTIONS_PATH_FULL)
-const Controller = createController(createActions(ACTIONS_PATH_FULL))
+const Controller = require('./task-controller')
 
 const routes = [
     {
@@ -15,7 +13,7 @@ const routes = [
     {
         method: 'get',
         path: '/:id',
-        action: Controller.findOne
+        action: Controller.findById
     },
     {
         method: 'post',

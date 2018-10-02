@@ -13,5 +13,9 @@
 	},
 	"description": {
 		"required": "description.required"
+	},
+	"menssages": {
+		"000": "Sucesso",
+		"001": "Erro de validação"
 	}
 }

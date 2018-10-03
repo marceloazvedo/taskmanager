@@ -8,7 +8,7 @@ const getNewExpirationDate = () => {
 }
 
 module.exports = (req, res) => {
-    UserDAO.find({login: req.body.login}),then(user => {
+    UserDAO.findOne({email: req.body.email}).then(user => {
         if(!user)
             throw ResponseUtils.errors.USER_NOT_FOUND
         else if(user.password != req.body.password)
@@ -16,6 +16,6 @@ module.exports = (req, res) => {
         return user
     }).then(user => 
             UserDAO.update({login: user.login, senha: user.password}, {expiration: getNewExpirationDate()})
-                .then(ResponseUtils.processResponse(res))
-    ).catch(err => ResponseUtils.responseWithCodeAndMessage(err))
+                .then(() => ResponseUtils.processResponse(req, res))
+    ).catch(err => ResponseUtils.processResponseWithError(req, res, err))
 }

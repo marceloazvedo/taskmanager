@@ -9,5 +9,14 @@
 	},
 	"name": {
 		"required": "Name is required!"
+	},
+	"description": {
+		"required": "Description is required."
+	},
+	"messages": {
+		"000": "Sucsess",
+		"001": "teste",
+		"002": "teste",
+		"003": "Usuário not found."
 	}
 }

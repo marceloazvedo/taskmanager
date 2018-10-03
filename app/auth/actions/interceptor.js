@@ -11,10 +11,10 @@ module.exports = (req, res, next) => {
     if ('OPTIONS' === req.method) {
         res.sendStatus(200)
     } else {
-        const urlsDefault = ['/api/autenticar']
+        const urlsDefault = ['/auth']
         const authorization = req.get('Authorization')
-        if (urlsDefault.indexOf(req.originalUrl) >= 0) {
-            res.status(401).end();
+        if (!authorization && urlsDefault.indexOf(req.originalUrl) >= 0) {
+            next()
         } else {
             UserDAO.findOne({token: authorization}).then(user => {
                 if(!user) req.status(401)

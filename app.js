@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
+const i18n = require('i18n-2')
 
 const router = express.Router()
 
@@ -11,6 +12,7 @@ const users = require('./app/user/user-routes')(router)
 const tasks = require('./app/task/task-routes')(router)
 
 const app = express()
+i18n.expressBind(app, { locales: ['pt', 'en'], extension: '.json' })
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false, retryWrites: true }))

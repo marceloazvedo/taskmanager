@@ -1,10 +1,10 @@
-const I18N = require("i18n")
+const i18n = require("i18n")
 
-I18N.configure({
+i18n.configure({
     locales:['pt', 'en'],
     directory: '../../locales',
     defaultLocale: 'pt',
     objectNotation: true
 })
 
-module.exports = I18N
+module.exports = i18n

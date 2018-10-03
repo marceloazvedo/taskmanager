@@ -12,10 +12,12 @@
 		"required": "Insira um nome!"
 	},
 	"description": {
-		"required": "description.required"
+		"required": "É necessário uma descrição."
 	},
-	"menssages": {
+	"messages": {
 		"000": "Sucesso",
-		"001": "Erro de validação"
+		"001": "Erro de validação",
+		"002": "teste",
+		"003": "Usuário não encontrado."
 	}
 }

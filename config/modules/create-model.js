@@ -3,7 +3,7 @@ const toController = (obj, action) => Object.assign(obj, action)
 const basicActions = [
     'findAll',
     'findOne',
-    'findBy',
+    'findOneBy',
     'create',
     'update',
     'remove'

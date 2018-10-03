@@ -1,1 +1,0 @@
-module.exports = (Model) => (field, value) => Model.find({[field]: value}).lean().exec()

@@ -1,6 +1,5 @@
 const UserDAO = require('../../../config/modules/create-dao')(require('../../user/user-model'), [])
 const ResponseUtils = require('../../../config/modules/response')
-const ErrorHandler = require('../../../config/modules/error-handler')
 
 module.exports = (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*")
@@ -17,9 +16,12 @@ module.exports = (req, res, next) => {
             next()
         } else {
             UserDAO.findOne({token: authorization}).then(user => {
-                if(!user) req.status(401)
-                else if(new Date() > user.expiration) req.status(401)
-                else next()
+                if(!user) 
+                    req.status(401)
+                else if(new Date() > user.expiration) 
+                    req.status(401)
+                else 
+                    next()
             })
         }
     }

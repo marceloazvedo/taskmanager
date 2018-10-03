@@ -16,11 +16,6 @@ const routes = [
         action: Controller.findById
     },
     {
-        method: 'post',
-        path: '/',
-        action: Controller.create
-    },
-    {
         method: 'put',
         path: '/:id',
         action: Controller.update
@@ -29,6 +24,11 @@ const routes = [
         method: 'delete',
         path: '/:id',
         action: Controller.remove
+    },
+    {
+        method: 'post',
+        path: '/register',
+        action: Controller.register
     }
 ]
 

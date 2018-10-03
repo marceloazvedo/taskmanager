@@ -1,28 +1,23 @@
 const UserDAO = require('../../../config/modules/create-dao')(require('../../user/user-model'), [])
-const ResponseUtils = require('../../../config/modules/response')
+const getNewExpirationDate = require('../../../config/modules/expiration-date')
+const setHeaders = require('../../../config/modules/set-headers')
+
+const OPTIONS_METHOD = 'OPTIONS'
+const PUBLIC_PATHS = ['/auth', '/public/register']
+const AUTHORIZATION_HEADER = 'Authorization'
 
 module.exports = (req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*")
-    res.header("Access-Control-Expose-Headers", "Authorization")
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
-    res.header("Access-Control-Allow-Headers", "x-access-token, Origin, X-Requested-With, X-XSRF-TOKEN, Authorization, Content-Type, Accept")
-
-    if ('OPTIONS' === req.method) {
-        res.sendStatus(200)
-    } else {
-        const urlsDefault = ['/auth']
-        const authorization = req.get('Authorization')
-        if (!authorization && urlsDefault.indexOf(req.originalUrl) >= 0) {
-            next()
-        } else {
+    setHeaders(res)
+    if (OPTIONS_METHOD === req.method) res.sendStatus(200)
+    else {
+        const authorization = req.get(AUTHORIZATION_HEADER)
+        if (!authorization && PUBLIC_PATHS.indexOf(req.originalUrl) >= 0) next()
+        else if (authorization) 
             UserDAO.findOne({token: authorization}).then(user => {
-                if(!user) 
-                    req.status(401)
-                else if(new Date() > user.expiration) 
-                    req.status(401)
-                else 
-                    next()
+                if(!user) res.status(401).end()
+                else if(new Date() > user.expiration) res.status(401).end()
+                else UserDAO.updateById(user._id, {$set: {expiration: getNewExpirationDate()}}).then(() => next())
             })
-        }
+        else res.status(401).end()
     }
 }

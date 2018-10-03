@@ -10,6 +10,7 @@ const AuthController = require('./app/auth/auth-controller')
 const auth = require('./app/auth/auth-routes')(router)
 const users = require('./app/user/user-routes')(router)
 const tasks = require('./app/task/task-routes')(router)
+const public = require('./app/public/public-routes')(router)
 
 const app = express()
 i18n.expressBind(app, { locales: ['pt', 'en'], extension: '.json' })
@@ -22,5 +23,6 @@ app.use('/*', AuthController.interceptor)
 app.use('/auth', auth)
 app.use('/users', users)
 app.use('/tasks', tasks)
+app.use('/public', public)
 
 module.exports = app

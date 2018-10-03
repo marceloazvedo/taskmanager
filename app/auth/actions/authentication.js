@@ -1,11 +1,8 @@
 const UserDAO = require('../../../config/modules/create-dao')(require('../../user/user-model'), [])
 const ResponseUtils = require('../../../config/modules/response')
 
-const getNewExpirationDate = () => {
-    const expiration = new Date()
-    expiration.setDate(new Date().getDate() + 7)
-    return expiration
-}
+const getNewExpirationDate = require('../../../config/modules/expiration-date')
+const generateToken = require('../../../config/modules/generate-token')
 
 module.exports = (req, res) => {
     UserDAO.findOne({email: req.body.email}).then(user => {
@@ -15,7 +12,7 @@ module.exports = (req, res) => {
             throw ResponseUtils.errors.WRONG_PASSWORD
         return user
     }).then(user => 
-            UserDAO.update({login: user.login, senha: user.password}, {expiration: getNewExpirationDate()})
+            UserDAO.update({login: user.login, senha: user.password}, {$set: {expiration: getNewExpirationDate(), token: generateToken(user.email)}})
                 .then(() => ResponseUtils.processResponse(req, res))
     ).catch(err => ResponseUtils.processResponseWithError(req, res, err))
 }

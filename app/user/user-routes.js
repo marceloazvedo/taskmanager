@@ -1,34 +1,26 @@
-const ACTIONS_FOLER = '/actions'
-const ACTIONS_PATH_FULL = __dirname + ACTIONS_FOLER
-
 const createRoutes = require('../../config/modules/create-routes')
-const Controller = require('./user-controller')
+const UserController = require('./user-controller')
 
 const routes = [
     {
         method: 'get',
-        path: '/',
-        action: Controller.findAll,
-    },
-    {
-        method: 'get',
-        path: '/:id',
-        action: Controller.findById
+        path: '/user',
+        action: UserController.findByToken,
     },
     {
         method: 'put',
-        path: '/:id',
-        action: Controller.update
+        path: '/user',
+        action: UserController.update,
     },
     {
         method: 'delete',
-        path: '/:id',
-        action: Controller.remove
+        path: '/user',
+        action: UserController.remove
     },
     {
         method: 'post',
-        path: '/register',
-        action: Controller.register
+        path: '/user/register',
+        action: UserController.register
     }
 ]
 

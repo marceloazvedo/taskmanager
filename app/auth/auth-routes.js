@@ -1,11 +1,11 @@
 const createRoutes = require('../../config/modules/create-routes')
-const Controller = require('./auth-controller')
+const AuthController = require('./auth-controller')
 
 const routes = [
     {
         method: 'post',
-        path: '/',
-        action: Controller.authentication
+        path: '/auth',
+        action: AuthController.authentication
     }
 ]
 

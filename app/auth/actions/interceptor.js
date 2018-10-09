@@ -3,7 +3,7 @@ const getNewExpirationDate = require('../../../config/modules/expiration-date')
 const setHeaders = require('../../../config/modules/set-headers')
 
 const OPTIONS_METHOD = 'OPTIONS'
-const PUBLIC_PATHS = ['/auth', '/public/register']
+const PUBLIC_PATHS = ['/api/auth', '/api/public/register']
 const AUTHORIZATION_HEADER = 'Authorization'
 
 module.exports = (req, res, next) => {
@@ -16,7 +16,7 @@ module.exports = (req, res, next) => {
             UserDAO.findOne({token: authorization}).then(user => {
                 if(!user) res.status(401).end()
                 else if(new Date() > user.expiration) res.status(401).end()
-                else UserDAO.updateById(user._id, {$set: {expiration: getNewExpirationDate()}}).then(() => next())
+                else UserDAO.update({_id: user._id}, {$set: {expiration: getNewExpirationDate()}}).then(() => next())
             })
         else res.status(401).end()
     }

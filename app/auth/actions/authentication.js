@@ -11,8 +11,9 @@ module.exports = (req, res) => {
         else if(user.password != req.body.password)
             throw ResponseUtils.errors.WRONG_PASSWORD
         return user
-    }).then(user => 
-            UserDAO.update({login: user.login, senha: user.password}, {$set: {expiration: getNewExpirationDate(), token: generateToken(user.email)}})
-                .then(() => ResponseUtils.processResponse(req, res))
-    ).catch(err => ResponseUtils.processResponseWithError(req, res, err))
+    }).then(user => {
+        const token = generateToken(user.email)
+        return UserDAO.update({login: user.login, password: user.password}, {$set: {expiration: getNewExpirationDate(), token: token}})
+        .then(() => ResponseUtils.processResponse(req, res, {token}))
+    }).catch(err => ResponseUtils.processResponseWithError(req, res, err))
 }

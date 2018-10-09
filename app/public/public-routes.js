@@ -4,7 +4,7 @@ const UserController = require('../user/user-controller')
 const routes = [
     {
         method: 'post',
-        path: '/register',
+        path: '/public/register',
         action: UserController.register
     }
 ]

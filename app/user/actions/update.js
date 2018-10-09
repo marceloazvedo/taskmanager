@@ -1,9 +1,8 @@
-const TaskDAO = require('../../../config/modules/create-dao')(require('../user-model'), [])
+const UserDAO = require('../../../config/modules/create-dao')(require('../user-model'), [])
 const ResponseUtils = require('../../../config/modules/response')
-const ErrorHandler = require('../../../config/modules/error-handler')
 
 module.exports = (req, res, next) => {
-    TaskDAO.updateById(req.params.id, req.body)
-        .then(ResponseUtils(res, {}))
-        .catch(err => ResponseUtils(res, err))
+    UserDAO.update({ token: req.get('Authorization') }, {$set: req.body})
+        .then(() => ResponseUtils.processResponse(req, res))
+        .catch(err => ResponseUtils.processResponseWithError(req, res, err))
 }

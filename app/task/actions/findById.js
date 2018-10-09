@@ -2,5 +2,5 @@ const TaskDAO = require('../../../config/modules/create-dao')(require('../task-m
 const ResponseUtils = require('../../../config/modules/response')
 
 module.exports =  (req, res, next) => {
-    TaskDAO.findById(req.params.id).then((task) => ResponseUtils(res, task))
+    TaskDAO.findOne({_id: req.params.id}).then((task) => ResponseUtils(res, task))
 }

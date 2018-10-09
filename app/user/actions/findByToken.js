@@ -2,7 +2,5 @@ const UserDAO = require('../../../config/modules/create-dao')(require('../user-m
 const ResponseUtils = require('../../../config/modules/response')
 
 module.exports = (req, res, next) => {
-    UserDAO.findAll({}).then((tasks) => {
-        ResponseUtils.processResponse(req, res, {tasks})
-    })
+    UserDAO.findOne({ token: req.get('Authorization') }).then((user) => ResponseUtils.processResponse(req, res, { user }))
 }

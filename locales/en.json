@@ -15,8 +15,8 @@
 	},
 	"messages": {
 		"000": "Sucsess",
-		"001": "teste",
-		"002": "teste",
-		"003": "Usuário not found."
+		"001": "Validation error",
+		"002": "Wrong password",
+		"003": "Usuário not found"
 	}
 }

@@ -1,1 +1,1 @@
-module.exports = (Model) => (id) => Model.deleteMany({_id: id})
+module.exports = (Model) => (query) => Model.deleteOne(query)

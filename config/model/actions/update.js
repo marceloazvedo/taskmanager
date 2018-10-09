@@ -1,1 +1,1 @@
-module.exports = (Model) => (query, obj) => Model.updateOne(query, {$set: obj}).exec()
+module.exports = (Model) => (query, obj) => Model.updateOne(query, obj).exec()

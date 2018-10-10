@@ -5,7 +5,7 @@ const getNewExpirationDate = require('../../../config/modules/expiration-date')
 const generateToken = require('../../../config/modules/generate-token')
 
 /**
- * @api {post} /api/public/register Authentication
+ * @api {post} /api/auth Authentication
  * @apiPermission public
  * @apiGroup Public
  * @apiVersion 1.0.0

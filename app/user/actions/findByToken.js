@@ -2,7 +2,7 @@ const UserDAO = require('../../../config/modules/create-dao')(require('../user-m
 const ResponseUtils = require('../../../config/modules/response')
 
 /**
- * @api {get} /api/public/register Account Info
+ * @api {get} /api/user Account Info
  * @apiPermission user
  * @apiGroup User
  * @apiVersion 1.0.0

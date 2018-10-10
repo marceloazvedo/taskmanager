@@ -1,7 +1,7 @@
 define({ "api": [
   {
     "type": "post",
-    "url": "/api/public/register",
+    "url": "/api/auth",
     "title": "Authentication",
     "permission": [
       {
@@ -31,7 +31,7 @@ define({ "api": [
     },
     "filename": "app/auth/actions/authentication.js",
     "groupTitle": "Public",
-    "name": "PostApiPublicRegister"
+    "name": "PostApiAuth"
   },
   {
     "type": "post",
@@ -286,7 +286,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/api/public/register",
+    "url": "/api/user",
     "title": "Account Info",
     "permission": [
       {
@@ -309,7 +309,7 @@ define({ "api": [
     },
     "filename": "app/user/actions/findByToken.js",
     "groupTitle": "User",
-    "name": "GetApiPublicRegister"
+    "name": "GetApiUser"
   },
   {
     "type": "put",

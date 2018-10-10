@@ -14,6 +14,11 @@ const routes = [
     },
     {
         method: 'get',
+        path: '/task',
+        action: TaskController.findAll
+    },
+    {
+        method: 'get',
         path: '/task/:id',
         action: TaskController.findById
     },

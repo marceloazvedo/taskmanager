@@ -1,3 +1,7 @@
+/**
+ * @apiDefine none Public Services
+ * Não é necessários nenhum token ou qualquer tipo de autorização para utilizar esse serviço, eles estão disponíveis de forma pública.
+ */
 const ACTIONS_PATH_FULL = __dirname + '/actions'
 
 const createActions = require('../../config/modules/create-actions')

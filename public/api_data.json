@@ -1,0 +1,359 @@
+[
+  {
+    "type": "post",
+    "url": "/api/public/register",
+    "title": "Authentication",
+    "permission": [
+      {
+        "name": "public"
+      }
+    ],
+    "group": "Public",
+    "version": "1.0.0",
+    "description": "<p>Serviço utilizado obter o <code>token</code> para acessar todos os serviços internos de gestão de usuário e gestão de tasks da <code>api</code>.</p>",
+    "parameter": {
+      "examples": [
+        {
+          "title": "Exemplo de requisição:",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"email\": \"marcelo@email.com\",\n\t\"password\": \"123123123\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Exemplo de resposta com sucesso:",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"token\": \"d9e7cc67bbd83aa2d96a2ad90fd86105\",\n\t\"code\": \"000\",\n\t\"message\": \"Sucesso\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/auth/actions/authentication.js",
+    "groupTitle": "Public",
+    "name": "PostApiPublicRegister"
+  },
+  {
+    "type": "post",
+    "url": "/api/public/register",
+    "title": "Register Account",
+    "permission": [
+      {
+        "name": "none",
+        "title": "Public Services",
+        "description": "<p>Não é necessários nenhum token ou qualquer tipo de autorização para utilizar esse serviço, eles estão disponíveis de forma pública.</p>"
+      }
+    ],
+    "group": "Public",
+    "version": "1.0.0",
+    "description": "<p>Para cadastrar-se e utilizar os serviços de cadastro de task é necessário inserir um e-mail válido (<code>email</code>), uma senha (<code>password</code>) e um nome (<code>name</code>), nenhum desses campos deve está em branco, e o e-mail deve ser um e-mail válido. Em caso de erro, a <code>api</code> retorna da seguinte forma, o campo que deu problema, o valor do campo e a mensagem, sendo esse um objeto contido dentro de um <code>array</code> com todos os erros dados, sejam, eles de validação, de campo em branco ou qualquer outro tipo de erro voltado para os CAMPOS de cadastro. Esse retorno funciona dessa forma para toda a <code>api</code>, sempre funcionando da seguinte forma, um código (<code>code</code>), mensagem (<code>message</code>) e os outros valores esperados pelo serviço. Abaixo temos dois exemplos de retorno da <code>api</code>, um que o cadastro deu errado e outro que deu certo, veja abaixo:</p>",
+    "parameter": {
+      "examples": [
+        {
+          "title": "Exemplo de requisição:",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"email\": \"marcelo@\",\n\t\"password\": \"\",\n\t\"name\": \"Marcelo Santos de Azevedo\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Exemplo de resposta com erros de validação:",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"errors\": [\n\t\t{\n\t\t\t\"field\": \"email\",\n\t\t\t\"value\": \"marcelo@\",\n\t\t\t\"message\": \"O email \\\"marcelo@\\\" não é válido!\"\n\t\t},\n\t\t{\n\t\t\t\"field\": \"password\",\n\t\t\t\"value\": \"\",\n\t\t\t\"message\": \"Insira uma senha!\"\n\t\t}\n\t],\n\t\"code\": \"001\",\n\t\"message\": \"Erro de validação\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Exemplo de resposta com sucesso:",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"code\": \"000\",\n\t\"message\": \"Sucesso\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/user/actions/register.js",
+    "groupTitle": "Public",
+    "name": "PostApiPublicRegister"
+  },
+  {
+    "type": "delete",
+    "url": "/api/task/:id",
+    "title": "Delete Task",
+    "permission": [
+      {
+        "name": "user",
+        "title": "User",
+        "description": "<p>Ao obter um <code>token</code> no serviço de autenticação, em todas as requisições do tipo <code>user</code> o token deve ser passado no <code>header</code> <code>Authorization</code>.</p>"
+      }
+    ],
+    "group": "Task",
+    "version": "1.0.0",
+    "description": "<p>Deletar <code>task</code> passando o <code>id</code> da task.</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Exemplo de resposta com sucesso:",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"code\": \"000\",\n\t\"message\": \"Sucesso\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/task/actions/remove.js",
+    "groupTitle": "Task",
+    "name": "DeleteApiTaskId"
+  },
+  {
+    "type": "get",
+    "url": "/api/task",
+    "title": "List All Tasks",
+    "permission": [
+      {
+        "name": "user",
+        "title": "User",
+        "description": "<p>Ao obter um <code>token</code> no serviço de autenticação, em todas as requisições do tipo <code>user</code> o token deve ser passado no <code>header</code> <code>Authorization</code>.</p>"
+      }
+    ],
+    "group": "Task",
+    "version": "1.0.0",
+    "description": "<p>Lista de <code>taks</code> já foram finalizadas.</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Exemplo de resposta com sucesso:",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"tasks\": [\n\t\t{\n\t\t\t\"_id\": \"5bbdf3de4747cf52786993ff\",\n\t\t\t\"description\": \"Terminar TCC\",\n\t\t\t\"created_at\": \"2018-10-10T12:43:10.878Z\",\n\t\t\t\"updated_at\": \"2018-10-10T12:43:10.878Z\"\n\t\t}\n\t],\n\t\"code\": \"000\",\n\t\"message\": \"Sucesso\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/task/actions/findAll.js",
+    "groupTitle": "Task",
+    "name": "GetApiTask"
+  },
+  {
+    "type": "get",
+    "url": "/api/task/finished",
+    "title": "Finished Task List",
+    "permission": [
+      {
+        "name": "user",
+        "title": "User",
+        "description": "<p>Ao obter um <code>token</code> no serviço de autenticação, em todas as requisições do tipo <code>user</code> o token deve ser passado no <code>header</code> <code>Authorization</code>.</p>"
+      }
+    ],
+    "group": "Task",
+    "version": "1.0.0",
+    "description": "<p>Lista de <code>taks</code> já foram finalizadas.</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Exemplo de resposta com sucesso:",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"tasks\": [\n\t\t{\n\t\t\t\"_id\": \"5bbdf3de4747cf52786993ff\",\n\t\t\t\"description\": \"Terminar TCC\",\n\t\t\t\"created_at\": \"2018-10-10T12:43:10.878Z\",\n\t\t\t\"updated_at\": \"2018-10-10T12:43:10.878Z\"\n\t\t}\n\t],\n\t\"code\": \"000\",\n\t\"message\": \"Sucesso\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/task/actions/findFinished.js",
+    "groupTitle": "Task",
+    "name": "GetApiTaskFinished"
+  },
+  {
+    "type": "get",
+    "url": "/api/task/todo",
+    "title": "To Do Task List",
+    "permission": [
+      {
+        "name": "user",
+        "title": "User",
+        "description": "<p>Ao obter um <code>token</code> no serviço de autenticação, em todas as requisições do tipo <code>user</code> o token deve ser passado no <code>header</code> <code>Authorization</code>.</p>"
+      }
+    ],
+    "group": "Task",
+    "version": "1.0.0",
+    "description": "<p>Lista de <code>taks</code> que ainda estão por fazer.</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Exemplo de resposta com sucesso:",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"tasks\": [\n\t\t{\n\t\t\t\"_id\": \"5bbdf3de4747cf52786993ff\",\n\t\t\t\"description\": \"Terminar TCC\",\n\t\t\t\"created_at\": \"2018-10-10T12:43:10.878Z\",\n\t\t\t\"updated_at\": \"2018-10-10T12:43:10.878Z\"\n\t\t}\n\t],\n\t\"code\": \"000\",\n\t\"message\": \"Sucesso\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/task/actions/findToDo.js",
+    "groupTitle": "Task",
+    "name": "GetApiTaskTodo"
+  },
+  {
+    "type": "post",
+    "url": "/api/task",
+    "title": "Create Task",
+    "permission": [
+      {
+        "name": "user",
+        "title": "User",
+        "description": "<p>Ao obter um <code>token</code> no serviço de autenticação, em todas as requisições do tipo <code>user</code> o token deve ser passado no <code>header</code> <code>Authorization</code>.</p>"
+      }
+    ],
+    "group": "Task",
+    "version": "1.0.0",
+    "parameter": {
+      "examples": [
+        {
+          "title": "Exemplo de requisição:",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"description\": \"Terminar TCC\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Exemplo de resposta com sucesso:",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"code\": \"000\",\n\t\"message\": \"Sucesso\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/task/actions/create.js",
+    "groupTitle": "Task",
+    "name": "PostApiTask"
+  },
+  {
+    "type": "put",
+    "url": "/api/task",
+    "title": "Update Task",
+    "permission": [
+      {
+        "name": "user",
+        "title": "User",
+        "description": "<p>Ao obter um <code>token</code> no serviço de autenticação, em todas as requisições do tipo <code>user</code> o token deve ser passado no <code>header</code> <code>Authorization</code>.</p>"
+      }
+    ],
+    "group": "Task",
+    "version": "1.0.0",
+    "description": "<p>Para editar a task, basta passar as os campos que deseja editar, caso não queira editar um campo é só não passar. Para finalizar uma task basta passar o campo <code>is_finish</code> com o valor <code>true</code>, o mesmo vale para o campo <code>description</code>.</p>",
+    "parameter": {
+      "examples": [
+        {
+          "title": "Exemplo de requisição:",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"description\": \"E aê\",\n\t\"is_finish\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Exemplo de resposta com sucesso:",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"code\": \"000\",\n\t\"message\": \"Sucesso\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/task/actions/update.js",
+    "groupTitle": "Task",
+    "name": "PutApiTask"
+  },
+  {
+    "type": "delete",
+    "url": "/api/user",
+    "title": "Delete Account",
+    "permission": [
+      {
+        "name": "user",
+        "title": "User",
+        "description": "<p>Ao obter um <code>token</code> no serviço de autenticação, em todas as requisições do tipo <code>user</code> o token deve ser passado no <code>header</code> <code>Authorization</code>.</p>"
+      }
+    ],
+    "group": "User",
+    "version": "1.0.0",
+    "description": "<p>Serviço utilizado para deletar a conta do usuário, é necessário enviar o <code>token</code> obtido na autenticação (<code>Auth</code>) no <code>Header</code> <code>Authorization</code>.</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Exemplo de resposta com sucesso:",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"code\": \"000\",\n\t\"message\": \"Sucesso\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/user/actions/remove.js",
+    "groupTitle": "User",
+    "name": "DeleteApiUser"
+  },
+  {
+    "type": "get",
+    "url": "/api/public/register",
+    "title": "Account Info",
+    "permission": [
+      {
+        "name": "user",
+        "title": "User",
+        "description": "<p>Ao obter um <code>token</code> no serviço de autenticação, em todas as requisições do tipo <code>user</code> o token deve ser passado no <code>header</code> <code>Authorization</code>.</p>"
+      }
+    ],
+    "group": "User",
+    "version": "1.0.0",
+    "description": "<p>Serviço utilizado para listar informações do usuário.</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Exemplo de resposta com sucesso:",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"user\": {\n\t\t\"email\": \"marceloazvedo1@gmail.com\",\n\t\t\"password\": \"123123123\",\n\t\t\"name\": \"Marcelo Azevedo\",\n\t\t\"created_at\": \"2018-10-09T18:51:16.762Z\",\n\t\t\"updated_at\": \"2018-10-10T12:20:00.921Z\"\n\t},\n\t\"code\": \"000\",\n\t\"message\": \"Sucesso\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/user/actions/findByToken.js",
+    "groupTitle": "User",
+    "name": "GetApiPublicRegister"
+  },
+  {
+    "type": "put",
+    "url": "/api/user",
+    "title": "Update Account",
+    "permission": [
+      {
+        "name": "user",
+        "title": "User",
+        "description": "<p>Ao obter um <code>token</code> no serviço de autenticação, em todas as requisições do tipo <code>user</code> o token deve ser passado no <code>header</code> <code>Authorization</code>.</p>"
+      }
+    ],
+    "group": "User",
+    "version": "1.0.0",
+    "description": "<p>Serviço utilizado para atualizar informações da conta do usuário, funciona basicamente da mesma forma que o cadastro, sendo que é necessário enviar o <code>token</code> obtido na autenticação (<code>Auth</code>) no <code>Header</code> <code>Authorization</code>.</p>",
+    "parameter": {
+      "examples": [
+        {
+          "title": "Exemplo de requisição:",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"email\": \"marcelo@\",\n\t\"password\": \"\",\n\t\"name\": \"Marcelo Santos de Azevedo\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Exemplo de resposta com erros de validação:",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"errors\": [\n\t\t{\n\t\t\t\"field\": \"email\",\n\t\t\t\"value\": \"marcelo@\",\n\t\t\t\"message\": \"O email \\\"marcelo@\\\" não é válido!\"\n\t\t},\n\t\t{\n\t\t\t\"field\": \"password\",\n\t\t\t\"value\": \"\",\n\t\t\t\"message\": \"Insira uma senha!\"\n\t\t}\n\t],\n\t\"code\": \"001\",\n\t\"message\": \"Erro de validação\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Exemplo de resposta com sucesso:",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"code\": \"000\",\n\t\"message\": \"Sucesso\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/user/actions/update.js",
+    "groupTitle": "User",
+    "name": "PutApiUser"
+  }
+]

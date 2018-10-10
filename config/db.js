@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const dbURI = 'mongodb://localhost/mongoose-atomic'
+const dbURI = 'mongodb://admin:admin123@ds125723.mlab.com:25723/taskmanager'
 
 mongoose.Promise = global.Promise
 mongoose.connect(dbURI, { useNewUrlParser: true })

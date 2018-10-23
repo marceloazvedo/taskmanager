@@ -21,5 +21,6 @@
 		"003": "Usuário não encontrado",
 		"004": "Usuário já cadastrado",
 		"CastError: Cast to ObjectId failed for value \"{ token: '6fd7fbf28e5c5b98b9f0ab709e94e5d1' }\" at path \"_id\" for model \"user\"": "CastError: Cast to ObjectId failed for value \"{ token: '6fd7fbf28e5c5b98b9f0ab709e94e5d1' }\" at path \"_id\" for model \"user\""
-	}
+	},
+	"title.required": "title.required"
 }

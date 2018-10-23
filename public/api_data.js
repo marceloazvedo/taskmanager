@@ -223,7 +223,7 @@ define({ "api": [
   },
   {
     "type": "put",
-    "url": "/api/task",
+    "url": "/api/task/:id",
     "title": "Update Task",
     "permission": [
       {
@@ -233,17 +233,28 @@ define({ "api": [
       }
     ],
     "group": "Task",
-    "version": "1.0.0",
-    "description": "<p>Para editar a task, basta passar as os campos que deseja editar, caso não queira editar um campo é só não passar. Para finalizar uma task basta passar o campo <code>is_finish</code> com o valor <code>true</code>, o mesmo vale para o campo <code>description</code>.</p>",
+    "version": "1.1.0",
     "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Task unique ID.</p>"
+          }
+        ]
+      },
       "examples": [
         {
           "title": "Exemplo de requisição:",
-          "content": "HTTP/1.1 200 OK\n{\n\t\"description\": \"E aê\",\n\t\"is_finish\": true\n}",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"title\": \"Hehehe\",\n\t\"description\": \"E aê\",\n\t\"is_finish\": true\n}",
           "type": "json"
         }
       ]
     },
+    "description": "<p>Para editar a task, basta passar as os campos que deseja editar, caso não queira editar um campo é só não passar. Para finalizar uma task basta passar o campo <code>is_finish</code> com o valor <code>true</code>, o mesmo vale para o campo <code>description</code>.</p>",
     "success": {
       "examples": [
         {
@@ -255,7 +266,7 @@ define({ "api": [
     },
     "filename": "app/task/actions/update.js",
     "groupTitle": "Task",
-    "name": "PutApiTask"
+    "name": "PutApiTaskId"
   },
   {
     "type": "delete",

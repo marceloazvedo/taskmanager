@@ -28,7 +28,10 @@ module.exports = (req, res, next) => {
     UserDAO.findOne({ token: req.get('Authorization') })
         .then(user => TaskDAO.findAll({ user: user._id, active: true })
             .then(tasks => {
-                ResponseUtils.processResponse(req, res, { tasks })
+                ResponseUtils.processResponse(req, res, {tasks: tasks.map(task => {
+                    delete task['user']
+                    return task
+                })})
             })
         ).catch(err => ResponseUtils.processResponseWithError(req, res, err))
 }

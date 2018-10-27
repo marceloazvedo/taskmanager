@@ -1,6 +1,6 @@
 const rules = [
     'StringBasic',
-    'requiredTrue'
+    'requiredFalse'
 ]
 
 module.exports = Object.assign({},

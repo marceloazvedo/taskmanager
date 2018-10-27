@@ -19,7 +19,13 @@
 		"001": "Erro de validação",
 		"002": "Senha inválida",
 		"003": "Usuário não encontrado",
-		"004": "Usuário já cadastrado"
+		"004": "Usuário já cadastrado",
+		"Error: Insira um titulo válido.": "Error: Insira um titulo válido.",
+		"Error: Insira um título ou descrição.": "Error: Insira um título ou descrição.",
+		"TypeError: JSON.stringfy is not a function": "TypeError: JSON.stringfy is not a function",
+		"TypeError: Cannot create property 'errors' on string 'Insira um título ou descrição.'": "TypeError: Cannot create property 'errors' on string 'Insira um título ou descrição.'",
+		"ReferenceError: ValidatorError is not defined": "ReferenceError: ValidatorError is not defined"
 	},
-	"title.required": "title.required"
+	"title.required": "title.required",
+	"undefined.undefined": "Insira um título ou descrição válida."
 }
